@@ -5,18 +5,9 @@ const App = (server) => {
   return {
     bootstrap: async () => {
 
-      // Initialize db connection
-      await db.init();
+      //Register components
+      await require('../components').register(server);
 
-
-      // Register API
-      await server.register({
-        plugin: require('../api').v1
-      }, {
-        routes: {
-          prefix: '/v1'
-        }
-      })
 
       // JWT auth
       await server.register(require('hapi-auth-jwt2'));
@@ -39,6 +30,15 @@ const App = (server) => {
           logEvents: ['request','response', 'onPostStart']
         }
       });
+
+      // Finally, connect to the database and seed
+      try {
+        await db.connect();
+        console.log(`Connected to the database`)
+        await db.seed();
+      }catch (e) {
+        console.error('Failed to connect to the database', e);
+      }
 
     }
   }
