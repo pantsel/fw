@@ -1,0 +1,9 @@
+[
+  {
+    "fullName": "Admin Administrator",
+    "emailAddress": "admin@admin.com",
+    "password": "admin1!",
+    "isSuperAdmin": true,
+    "active": true
+  }
+]
