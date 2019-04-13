@@ -3,7 +3,7 @@ const requireAll = require('require-all');
 global.restops = {
   config: requireAll(__dirname + '/config'),
   models: {},
-  utils: require('./lib/utils')
+  utils: require('./core/lib/utils')
 };
 
 const Hapi = require('hapi');

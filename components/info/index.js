@@ -1,5 +1,3 @@
-const Utils = require('../../lib/utils');
-
 module.exports = {
   name: 'info',
   description: 'Provides an informational API about the service',
@@ -9,6 +7,6 @@ module.exports = {
     prefix: '/v1'
   },
   register: async function (server, options) {
-    await Utils.registerRoutes(__dirname, server);
+    await restops.utils.registerRoutes(__dirname, server);
   }
 }

@@ -1,6 +1,5 @@
 const _ = require('lodash');
 const util = require('util');
-const Utils = require('../../lib/utils');
 
 module.exports = module.exports = {
   name: 'core-routes',
@@ -21,7 +20,7 @@ module.exports = module.exports = {
 
       const componentsDefConfig = _.get(restops, 'config.components', {});
       // Rename default config's `restfulRouteOptions` key to use it as fallback
-      Utils.object.renameKey(componentsDefConfig, 'restfulRouteOptions', 'defRestfulRouteOptions');
+      restops.utils.object.renameKey(componentsDefConfig, 'restfulRouteOptions', 'defRestfulRouteOptions');
       // console.log(util.inspect({componentsDefConfig}, false, null, true ))
 
       const componentConfig = _.get(component, 'options', {});

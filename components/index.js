@@ -1,6 +1,5 @@
 const { lstatSync, readdirSync, existsSync } = require('fs');
 const { join } = require('path')
-const Utils = require('../lib/utils');
 const requireAll = require('require-all');
 const _ = require('lodash');
 
@@ -20,7 +19,7 @@ module.exports = {
     });
 
     // Register components as plugins
-    Utils.asyncForEach(dirNames, async (dir) => {
+    await restops.utils.asyncForEach(dirNames, async (dir) => {
       if(existsSync(join(__dirname, dir, 'index.js'))) {
         const plugin = require(`./${dir}`);
         await server.register({

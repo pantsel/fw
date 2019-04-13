@@ -1,6 +1,5 @@
 const db = require('../database');
 const requireAll = require('require-all');
-const Utils = require('../lib/utils');
 const _ = require('lodash');
 
 const App = (server) => {
@@ -12,7 +11,7 @@ const App = (server) => {
         core: requireAll({
           dirname: process.cwd() + '/core',
           map: function (name, path) {
-            return Utils.string.camelize(name);
+            return restops.utils.string.camelize(name);
           }
         })
       });
