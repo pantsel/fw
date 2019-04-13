@@ -1,0 +1,8 @@
+const Boom = require('boom');
+const _ = require('lodash');
+
+module.exports = (_.merge(restops.core.controllers.baseController(restops.models.__NAME__), {
+
+  // Overwrite methods or add new ones here
+
+}));

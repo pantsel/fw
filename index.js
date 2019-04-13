@@ -1,6 +1,7 @@
 global.restops = {
   config: require('./config'),
-  models: {}
+  models: {},
+  utils: require('./lib/utils')
 };
 
 const Hapi = require('hapi');

@@ -1,0 +1,15 @@
+module.exports = {
+  name: '__NAME_CAPITALIZED__',
+  description: 'Describe the __NAME__ component',
+  version: '1.0.0',
+  options: {
+    routes: {
+      prefix: '/v1'
+    }
+  },
+  register: async function (server, options) {
+
+    // Register component routes
+    await restops.utils.registerRoutes(__dirname, server);
+  }
+}

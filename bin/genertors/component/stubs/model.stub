@@ -1,0 +1,25 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const schema = new Schema({
+  createdAt: {
+    type: Number
+  },
+  updatedAt: {
+    type: Number
+  }
+});
+
+schema.pre('save', function (next) {
+
+  now = new Date().getTime();
+  this.updatedAt = now;
+  if (!this.created_at) {
+    this.createdAt = now;
+  }
+
+  next();
+});
+
+
+module.exports = mongoose.model('__NAME_CAPITALIZED__', schema);

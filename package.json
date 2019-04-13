@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "restops": "node ./bin/index.js"
   },
   "author": "Panagis Tselentis",
   "license": "MIT",
@@ -21,7 +22,12 @@
     "moment": "^2.24.0",
     "mongoose": "^5.4.19",
     "npm": "^6.9.0",
+    "pluralize": "^7.0.0",
     "require-all": "^3.0.0",
     "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1"
   }
 }

@@ -1,0 +1,15 @@
+const Joi = require('joi');
+
+module.exports = {
+  validate : {
+    payload: {
+
+    },
+    failAction: function (request, h, error) {
+
+      // Write custom logic here
+
+      return error;
+    }
+  }
+}

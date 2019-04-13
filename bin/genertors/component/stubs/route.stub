@@ -1,0 +1,15 @@
+const Controller = require('../controllers/__NAME__-controller');
+const Validator = require('../validators/__NAME__-validator');
+
+module.exports = (server) => {
+
+  // List all __NAME_PLURAL__
+  server.route({
+    method: 'GET',
+    path: '/__NAME_PLURAL__',
+    handler: Controller.list,
+    options: {
+      auth: false
+    }
+  })
+}

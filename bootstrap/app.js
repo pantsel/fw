@@ -17,8 +17,6 @@ const App = (server) => {
         })
       });
 
-      console.log(restops.core.services);
-
       //Register components
       await require('../components').register(server);
 
