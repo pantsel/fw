@@ -1,8 +1,9 @@
 const _ = require('lodash');
 const Boom = require('boom');
-const JWT = require('../../../api/v1/services/jwt');
+const JWT = restops.core.services.jwt.validator;
 
-module.exports = (_.merge(require('../../../api/v1/base/controller')(restops.models.user), {
+
+module.exports = (_.merge(restops.core.controllers.baseController(restops.models.user), {
   // Overwrite methods or add new ones here
 
   login: async (req, h) => {
@@ -37,4 +38,4 @@ module.exports = (_.merge(require('../../../api/v1/base/controller')(restops.mod
 
   }
 
-}))
+}));
