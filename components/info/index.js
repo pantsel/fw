@@ -6,10 +6,7 @@ module.exports = {
   version: '1.0.0',
   options: {
     api: true,
-    blueprints: {
-      rest: false,
-      prefix: '/v1'
-    }
+    prefix: '/v1'
   },
   register: async function (server, options) {
     await Utils.registerRoutes(__dirname, server);

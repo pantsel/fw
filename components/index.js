@@ -28,7 +28,7 @@ module.exports = {
           options: plugin.options
         }, {
           routes: {
-            prefix:_.get(plugin, 'options.blueprints.prefix')
+            prefix:_.get(plugin, 'options.prefix')
           }
         })
       }
