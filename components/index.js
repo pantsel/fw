@@ -24,8 +24,13 @@ module.exports = {
       if(existsSync(join(__dirname, dir, 'index.js'))) {
         const plugin = require(`./${dir}`);
         await server.register({
-          plugin: plugin
-        }, plugin.options)
+          plugin: plugin,
+          options: plugin.options
+        }, {
+          routes: {
+            prefix:_.get(plugin, 'options.blueprints.prefix')
+          }
+        })
       }
     })
   }

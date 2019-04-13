@@ -1,11 +1,13 @@
 const Utils = require('../../lib/utils');
 
 module.exports = {
-  name: 'Info',
+  name: 'info',
   description: 'Provides an informational API about the service',
   version: '1.0.0',
   options: {
-    routes: {
+    api: true,
+    blueprints: {
+      rest: false,
       prefix: '/v1'
     }
   },

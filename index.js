@@ -1,5 +1,7 @@
+const requireAll = require('require-all');
+
 global.restops = {
-  config: require('./config'),
+  config: requireAll(__dirname + '/config'),
   models: {},
   utils: require('./lib/utils')
 };
@@ -14,7 +16,6 @@ const server = Hapi.server({
 const init = async () => {
   await require('./bootstrap/app')(server).bootstrap();
   await server.start();
-  console.log(`Server running at: ${server.info.uri}`);
 };
 
 process.on('unhandledRejection', (err) => {

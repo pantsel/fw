@@ -3,9 +3,7 @@ module.exports = {
   description: 'Describe the __NAME__ component',
   version: '1.0.0',
   options: {
-    routes: {
-      prefix: '/v1'
-    }
+    routesPrefix: '/v1'
   },
   register: async function (server, options) {
 

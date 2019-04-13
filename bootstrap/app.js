@@ -38,17 +38,27 @@ const App = (server) => {
         plugin: require('hapi-pino'),
         options: {
           prettyPrint: true,
-          logEvents: ['request','response', 'onPostStart']
+          level: process.env !== 'production' ? 'debug': 'info',
+          logEvents: [
+            'request',
+            'response',
+            'onPostStart'
+          ]
         }
+      });
+
+      await server.register({
+        plugin: require('../core/routes/index'),
+
       });
 
       // Finally, connect to the database and seed
       try {
         await db.connect();
-        console.log(`Connected to the database`)
+        server.logger().info(`Connected to the database`)
         await db.seed();
       }catch (e) {
-        console.error('Failed to connect to the database', e);
+        server.logger().error('Failed to connect to the database', e)
       }
 
     }
