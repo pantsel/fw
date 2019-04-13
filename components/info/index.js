@@ -1,6 +1,6 @@
 const Utils = require('../../lib/utils');
 
-const InfoComponent = {
+module.exports = {
   name: 'Info',
   description: 'Provides an informational API about the service',
   version: '1.0.0',
@@ -13,5 +13,3 @@ const InfoComponent = {
     await Utils.registerRoutes(__dirname, server);
   }
 }
-
-module.exports = InfoComponent;
