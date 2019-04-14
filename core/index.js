@@ -7,7 +7,7 @@ const App = {
   bootstrap: async (server) => {
 
     //Register components
-    await require('../components').register(server);
+    await require('./components')(server).register;
 
     // Register auth strategies
     await server.register({

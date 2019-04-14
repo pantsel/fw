@@ -1,5 +1,7 @@
 module.exports = {
 
+  dir: `${__basedir}/components`,
+
   // Default routes prefix if not explicitly specified
   prefix: '',
 

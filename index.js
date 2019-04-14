@@ -1,4 +1,4 @@
-const App = require('./core/app'); // Require the app before anything else
+const App = require('./core'); // Require the app before anything else
 const Hapi = require('hapi');
 const server = Hapi.server({
   port: restops.config.server.port,

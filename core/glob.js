@@ -1,6 +1,8 @@
 const path = require('path');
 const requireAll = require('require-all');
 
+global.__basedir = path.resolve(process.cwd());
+
 global.restops = {};
 
 global.restops.config = requireAll(path.join(process.cwd(), 'config'));

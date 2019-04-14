@@ -1,5 +1,5 @@
 const pluralize = require('pluralize')
-const Utils = require('../../../lib/utils');
+const Utils = restops.utils;
 const fs = require('fs');
 const path = require('path');
 const mkdirp = require('mkdirp');
@@ -54,7 +54,7 @@ module.exports = {
       ]
 
       const stubs = fs.readdirSync(__dirname + '/stubs');
-      const baseDir = path.join(process.cwd(), 'components', name);
+      const baseDir = path.join(restops.config.components.dir, name);
 
       subDirs.forEach(subDir => {
         mkdirp.sync(`${baseDir}/${subDir.name}`);
