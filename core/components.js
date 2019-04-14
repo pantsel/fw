@@ -137,7 +137,7 @@ const Components = {
     }
     const handler = _.merge(_.cloneDeep(baseHandler), componentHandler || {});
 
-    const crud = require('./routes/crud')(server, component.name, handler, config);
+    const crud = require('./base/routes')(server, component.name, handler, config);
 
     // console.log(crud.routes)
     const registrations = []; // Unique routes to be registered
