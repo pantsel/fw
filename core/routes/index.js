@@ -1,7 +1,5 @@
 const _ = require('lodash');
-const util = require('util');
 const path = require('path');
-const pluralize = require('pluralize');
 const fs = require('fs');
 
 module.exports = module.exports = {
@@ -39,8 +37,7 @@ module.exports = module.exports = {
       if(!model) return;
 
       const baseHandler = require('../controllers/base-controller')(model);
-      const componentPluralName = pluralize(component.name);
-      const componentHandlerPath = path.join(process.cwd(), 'components', component.name, 'controllers',  `${componentPluralName}-controller.js`);
+      const componentHandlerPath = path.join(process.cwd(), 'components', component.name, 'controllers',  `${component.name}-controller.js`);
 
       let componentHandler;
       if(fs.existsSync(componentHandlerPath)) {
