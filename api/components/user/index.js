@@ -24,8 +24,5 @@ module.exports = {
         auth: 'jwt'
       }
     }
-  },
-  // register: async function (server, options) {
-  //
-  // }
+  }
 };
