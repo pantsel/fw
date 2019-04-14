@@ -6,13 +6,13 @@ const App = {
 
   bootstrap: async (server) => {
 
-    //Register components
-    await require('./components')(server).register;
-
     // Register auth strategies
     await server.register({
       plugin: require('./authorizers')
     })
+
+    //Register components
+    await require('./components').register(server);
 
     // CORS
     await server.register({
@@ -34,17 +34,13 @@ const App = {
       }
     });
 
-    await server.register({
-      plugin: require('../core/routes/index'),
-
-    });
-
     // Connect to the database and seed
     try {
       await db.connect();
       server.logger().info(`Connected to the database`)
       await db.seed();
     }catch (e) {
+      console.error(e)
       server.logger().error('Failed to connect to the database', e)
     }
 

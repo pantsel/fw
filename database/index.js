@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const connectionString = process.env.MONGOOSE_URL || `mongodb://localhost:27017/restops`;
+const connectionString = restops.config.custom.mongo.url;
 
 const Database = {
 
@@ -12,7 +12,7 @@ const Database = {
     const seedEntities = [
       {
         name: 'Users',
-        model: restops.models.user,
+        model: restops.components.user.model,
         seedData: process.env.USERS_SEED_DATA || require('./seeds/users')
       }
     ]

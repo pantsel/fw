@@ -48,6 +48,10 @@ const Utils = {
       if (typeof s !== 'string') return ''
       return s.charAt(0).toUpperCase() + s.slice(1)
     }
+  },
+
+  getFingerprint(path) {
+    return path.replace(/\{(.+?)\}/g, '?')
   }
 
 }

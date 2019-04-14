@@ -25,7 +25,7 @@ module.exports = {
       }
     }
   },
-  register: async function (server, options) {
-    await restops.utils.registerRoutes(__dirname, server);
-  }
+  // register: async function (server, options) {
+  //
+  // }
 };
