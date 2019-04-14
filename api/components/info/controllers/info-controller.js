@@ -1,4 +1,4 @@
-const pckg = require('../../../package');
+const pckg = require('../../../../package');
 
 module.exports = {
   info: async (request, h) => {
