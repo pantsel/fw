@@ -1,12 +1,24 @@
+// __NAME__ component configuration
+
 module.exports = {
-  name: '__NAME_CAPITALIZED__',
+  name: '__NAME__',
   description: 'Describe the __NAME__ component',
   version: '1.0.0',
   options: {
+
+    // Treat this component as an API
     api: true,
+
+    // Expose default RESTful routes
     rest: true,
+
+    // Routes prefix
     prefix: '/v1',
+
+    // Pluralize entity names in auto-generated routes
     pluralize: true,
+
+    // Auto-generated RESTful routes config
     restfulRouteOptions: {
       list: {
         auth: false,
@@ -34,10 +46,5 @@ module.exports = {
         validate: null
       }
     }
-  },
-  register: async function (server, options) {
-
-    // Register component routes
-    await restops.utils.registerRoutes(__dirname, server);
   }
 }

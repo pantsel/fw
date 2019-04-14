@@ -103,7 +103,7 @@ const Components = {
       && componentRoutes[path].method.toLowerCase() === method.toLowerCase();
   },
 
-  async registerComponentRESTfulRoutes (componentName, component, server) {
+  registerComponentRESTfulRoutes (componentName, component, server) {
 
     const componentsDefConfig = _.get(restops, 'config.components', {});
     // Rename default config's `restfulRouteOptions` key to use it as fallback

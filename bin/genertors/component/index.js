@@ -26,39 +26,10 @@ module.exports = {
         __NAME_CAPITALIZED__: Utils.string.capitalize(name)
       }
 
-      const subDirs = [
-        {
-          name: 'controllers',
-          stub: 'controller.stub'
-        },
-        {
-          name: 'middleware',
-          stub: 'middleware.stub'
-        },
-        {
-          name: 'models',
-          stub: 'model.stub'
-        },
-        {
-          name: 'routes',
-          stub: 'route.stub'
-        },
-        {
-          name: 'services',
-          stub: 'service.stub'
-        },
-        {
-          name: 'validators',
-          stub: 'validator.stub'
-        },
-      ]
-
       const stubs = fs.readdirSync(__dirname + '/stubs');
       const baseDir = path.join(restops.config.components.dir, name);
 
-      subDirs.forEach(subDir => {
-        mkdirp.sync(`${baseDir}/${subDir.name}`);
-      })
+      mkdirp.sync(baseDir);
 
       stubs.forEach(file => {
         let data = fs.readFileSync(`${__dirname}/stubs/${file}`, 'utf8');
@@ -69,21 +40,9 @@ module.exports = {
         if(file === 'index.stub') { // write index.js
           fs.writeFileSync(`${baseDir}/index.js`, data);
         }else{
-          const subDir = _.find(subDirs, item => item.stub === file);
-          if(subDir) {
-            let fileName;
-            switch (subDir.name) {
-              case 'models':
-                fileName = `${overwrites.__NAME__}.js`
-                break;
-              case 'routes':
-                fileName = `${overwrites.__NAME__}-routes.js`
-                break;
-              default:
-                fileName = `${name}-${file.replace('.stub', '.js')}`;
-            }
-            fs.writeFileSync(`${baseDir}/${subDir.name}/${fileName}`, data);
-          }
+          let fileName;
+          fileName = `${overwrites.__NAME__}.${file.replace('.stub', '.js')}`;
+          fs.writeFileSync(`${baseDir}/${fileName}`, data);
         }
       })
     }catch (e) {
