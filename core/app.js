@@ -9,10 +9,10 @@ const App = {
     //Register components
     await require('../components').register(server);
 
-    // JWT auth
-    await server.register(require('hapi-auth-jwt2'));
-    server.auth.strategy('jwt', 'jwt', restops.helpers.jwt.validator);
-    server.auth.default('jwt');
+    // Register auth strategies
+    await server.register({
+      plugin: require('./authorizers')
+    })
 
     // CORS
     await server.register({
@@ -50,6 +50,8 @@ const App = {
 
     // Finally, start the Server
     await server.start();
+
+    return server;
 
   }
 }

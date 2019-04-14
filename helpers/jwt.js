@@ -22,11 +22,11 @@ module.exports = {
       payload.jti = user.refreshToken;
     }
 
-    return jwt.sign(payload, restops.config.auth.jwt.secret);
+    return jwt.sign(payload, restops.config.custom.jwt.secret);
   },
 
   validator: {
-    key: restops.config.auth.jwt.secret,
+    key: restops.config.custom.jwt.secret,
     validate: async (decoded, request) => {
       const user = await restops.models.user.findById(decoded.sub);
       if(!user || user.refreshToken !== decoded.jti) return { isValid: false };
