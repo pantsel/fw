@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "restops": "node ./bin/index.js"
+    "cli": "node ./bin/index.js"
   },
   "author": "Panagis Tselentis",
   "license": "MIT",
