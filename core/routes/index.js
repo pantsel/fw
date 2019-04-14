@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const path = require('path');
 const fs = require('fs');
+const util = require('util')
 
 module.exports = module.exports = {
   name: 'core-routes',
@@ -75,14 +76,15 @@ module.exports = module.exports = {
       })
     })
 
-    const registrationsTable = _.map(server.table(), item => _.pick(item, ['method', 'path', 'params', 'fingerprint']));
+    const registrationsTable = _.map(server.table(), item => _.pick(item, ['method', 'path', 'params', 'fingerprint', 'settings']));
     const routes = [];
     registrationsTable.forEach(reg => {
       routes.push({
         method: reg.method.toUpperCase(),
         path: reg.path,
         params: reg.params,
-        fingerprint: reg.fingerprint
+        auth: _.get(reg, 'settings.auth.strategies', []),
+        fingerprint: reg.fingerprint,
       })
     })
     // server.logger().debug(`REGISTERED ROUTES`)

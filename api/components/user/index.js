@@ -9,29 +9,19 @@ module.exports = {
     pluralize: true,
     restfulRouteOptions: {
       list: {
-        auth: false,
-        pre: [],
-        validate: null
+        auth: false
       },
       findById: {
-        auth: false,
-        pre: [],
-        validate: null
+        auth: false
       },
       create: {
-        auth: 'jwt',
-        pre: [],
-        validate: null
+        auth: 'jwt'
       },
       update: {
-        auth: 'jwt',
-        pre: [],
-        validate: null
+        auth: 'jwt'
       },
       destroy: {
-        auth: 'jwt',
-        pre: [],
-        validate: null
+        auth: 'jwt'
       }
     }
   },
