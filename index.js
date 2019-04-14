@@ -1,11 +1,4 @@
-const requireAll = require('require-all');
-
-global.restops = {
-  config: requireAll(__dirname + '/config'),
-  models: {},
-  utils: require('./core/lib/utils')
-};
-
+const App = require('./core/app'); // Require the app before anything else
 const Hapi = require('hapi');
 const server = Hapi.server({
   port: restops.config.server.port,
@@ -14,8 +7,7 @@ const server = Hapi.server({
 
 
 const init = async () => {
-  await require('./bootstrap/app')(server).bootstrap();
-  await server.start();
+  await App.bootstrap(server);
 };
 
 process.on('unhandledRejection', (err) => {

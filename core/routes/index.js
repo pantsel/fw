@@ -1,5 +1,8 @@
 const _ = require('lodash');
 const util = require('util');
+const path = require('path');
+const pluralize = require('pluralize');
+const fs = require('fs');
 
 module.exports = module.exports = {
   name: 'core-routes',
@@ -36,10 +39,19 @@ module.exports = module.exports = {
       if(!model) return;
 
       const baseHandler = require('../controllers/base-controller')(model);
+      const componentPluralName = pluralize(component.name);
+      const componentHandlerPath = path.join(process.cwd(), 'components', component.name, 'controllers',  `${componentPluralName}-controller.js`);
+
+      let componentHandler;
+      if(fs.existsSync(componentHandlerPath)) {
+        componentHandler = require(componentHandlerPath);
+      }
+      const handler = _.merge(_.cloneDeep(baseHandler), componentHandler || {});
+
 
       // console.log(util.inspect({config}, false, null, true ))
 
-      const crud = require('./crud')(server, component.name, baseHandler, config);
+      const crud = require('./crud')(server, component.name, handler, config);
 
       // console.log(crud.routes)
       const registrations = []; // Unique routes to be registered
@@ -66,10 +78,18 @@ module.exports = module.exports = {
       })
     })
 
-    const registrationsTable = _.map(server.table(), item => _.pick(item, ['method', 'path']));
+    const registrationsTable = _.map(server.table(), item => _.pick(item, ['method', 'path', 'params', 'fingerprint']));
+    const routes = [];
     registrationsTable.forEach(reg => {
-      server.logger().debug(`Route registered: [${reg.method.toUpperCase()}] ${reg.path}`)
+      routes.push({
+        method: reg.method.toUpperCase(),
+        path: reg.path,
+        params: reg.params,
+        fingerprint: reg.fingerprint
+      })
     })
+    // server.logger().debug(`REGISTERED ROUTES`)
+    console.table(routes);
 
     // console.log(_.map(server.table(), item => _.pick(item, ['method', 'path'])))
   }

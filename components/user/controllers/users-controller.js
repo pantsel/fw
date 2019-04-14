@@ -3,7 +3,7 @@ const Boom = require('boom');
 const JWT = restops.core.services.jwt.validator;
 
 
-module.exports = (_.merge(restops.core.controllers.baseController(restops.models.user), {
+module.exports = {
   // Overwrite methods or add new ones here
 
   login: async (req, h) => {
@@ -38,4 +38,4 @@ module.exports = (_.merge(restops.core.controllers.baseController(restops.models
 
   }
 
-}));
+}
