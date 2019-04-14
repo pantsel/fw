@@ -1,34 +1,17 @@
-const requireAll = require('require-all');
-const path = require('path');
+require('./glob') // Require Globals first
 const db = require('../database');
-const _ = require('lodash');
 
-global.restops = {
-  config: requireAll(path.join(process.cwd(), 'config')),
-  models: {},
-  utils: require('./lib/utils')
-};
 
 const App = {
 
   bootstrap: async (server) => {
-
-    // Load core
-    _.extend(restops, {
-      core: requireAll({
-        dirname: process.cwd() + '/core',
-        map: function (name, path) {
-          return restops.utils.string.camelize(name);
-        }
-      })
-    });
 
     //Register components
     await require('../components').register(server);
 
     // JWT auth
     await server.register(require('hapi-auth-jwt2'));
-    server.auth.strategy('jwt', 'jwt', restops.core.services.jwt.validator);
+    server.auth.strategy('jwt', 'jwt', restops.helpers.jwt.validator);
     server.auth.default('jwt');
 
     // CORS

@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const Boom = require('boom');
-const JWT = restops.core.services.jwt.validator;
+const JWT = restops.helpers.jwt.validator;
 
 
 module.exports = {
