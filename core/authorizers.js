@@ -1,7 +1,7 @@
 const requireAll = require('require-all');
 
 module.exports = {
-  name: 'auth',
+  name: 'authorizers',
   description: 'Register Authorization strategies here',
   version: '1.0.0',
   register: async function (server, options) {
