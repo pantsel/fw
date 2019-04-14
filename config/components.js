@@ -6,7 +6,7 @@ module.exports = {
   // Automatically generate RESTful API from components
   rest: true,
 
-  // Default RESTful route options if not explicitly specified
+  // Default RESTful route options if not explicitly specified on a route
   // https://hapijs.com/api#route-options
   restfulRouteOptions: {
     auth: false
