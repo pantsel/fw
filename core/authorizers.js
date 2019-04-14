@@ -1,5 +1,4 @@
 const requireAll = require('require-all');
-const path = require('path');
 
 module.exports = {
   name: 'auth',
