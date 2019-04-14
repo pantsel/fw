@@ -7,7 +7,7 @@ module.exports = {
   version: '1.0.0',
   register: async function (server, options) {
     requireAll({
-      dirname: path.join(__basedir, 'api', 'strategies'),
+      dirname: restops.config.strategies.dir,
       resolve: function (strategy) {
         return strategy(server);
       }

@@ -27,7 +27,7 @@ module.exports = {
       }
 
       const stubs = fs.readdirSync(__dirname + '/stubs');
-      const baseDir = path.join(restops.config.components.dir, name);
+      const baseDir = path.join(restops.config.apis.dir, name);
 
       mkdirp.sync(baseDir);
 

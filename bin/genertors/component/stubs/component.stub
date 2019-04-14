@@ -1,0 +1,14 @@
+// __NAME__ component configuration
+
+module.exports = {
+  name: '__NAME__',
+  description: 'Describe the __NAME__ component',
+  version: '1.0.0',
+  options: {
+  },
+  register: async function (server, options) {
+
+    // __NAME__ logic
+
+  }
+}

@@ -5,6 +5,20 @@ const argv = require('minimist')(process.argv.slice(2));
 
 const commands = {
   generate: {
+    api: {
+      argvLength: 3,
+      validate: function () {
+        if(argv._.length !== commands.generate.api.argvLength) return error(`Invalid arguments length`);
+      },
+      run: async (args) => {
+        try {
+          await require('./genertors/api').run(args[2])
+        }catch (e) {
+          return error(e.message);
+        }
+
+      }
+    },
     component: {
       argvLength: 3,
       validate: function () {
@@ -22,7 +36,7 @@ const commands = {
     helper: {
       argvLength: 3,
       validate: function () {
-        if(argv._.length !== commands.generate.component.argvLength) return error(`Invalid arguments length`);
+        if(argv._.length !== commands.generate.helper.argvLength) return error(`Invalid arguments length`);
       },
       run: async (args) => {
         try {

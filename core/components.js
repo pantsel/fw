@@ -18,8 +18,8 @@ const Components = {
     // Register components as plugins
     if (_.keys(restops.components).length) {
       await restops.utils.asyncForEach(_.keys(restops.components), async (key) => {
-        if (restops.components[key].index) {
-          const plugin = Components.createPlugin(key, restops.components[key].index);
+        if (restops.components[key].component) {
+          const plugin = Components.createPlugin(key, restops.components[key].component);
           await server.register({
             plugin: plugin,
             options: plugin.options
@@ -55,6 +55,12 @@ const Components = {
   },
 
   createPlugin(componentName, component) {
+
+    // If the register function already exists,
+    // return it as is
+    if(component.register) {
+      return component;
+    }
 
     component.register = async function (server, options) {
       if(options.api && restops.components[componentName]) {
@@ -130,9 +136,6 @@ const Components = {
       componentHandler = require(componentHandlerPath);
     }
     const handler = _.merge(_.cloneDeep(baseHandler), componentHandler || {});
-
-
-    console.log(util.inspect({handler}, false, null, true ))
 
     const crud = require('./routes/crud')(server, component.name, handler, config);
 
